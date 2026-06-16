@@ -1,0 +1,38 @@
+{
+  "captured_at": "2026-06-16T10:55:00+00:00",
+  "duration_seconds": 300,
+  "mode": "simulated_starter_pack_baseline",
+  "note": "Starter pack does not ship the 10-service stack or AIOps FastAPI pipeline. These baseline values are used to exercise the report and scoring workflow.",
+  "metrics": {
+    "probe_pass_rate": {
+      "mean": 1.0,
+      "p99": 1.0,
+      "samples": 60
+    },
+    "checkout_p99_latency_ms": {
+      "mean": 182.0,
+      "p99": 244.0,
+      "samples": 60
+    },
+    "api_gateway_p99_latency_ms": {
+      "mean": 96.0,
+      "p99": 151.0,
+      "samples": 60
+    },
+    "payment_error_rate": {
+      "mean": 0.002,
+      "p99": 0.006,
+      "samples": 60
+    },
+    "inventory_error_rate": {
+      "mean": 0.001,
+      "p99": 0.004,
+      "samples": 60
+    },
+    "log_ingestion_lag_seconds": {
+      "mean": 8.0,
+      "p99": 19.0,
+      "samples": 60
+    }
+  }
+}

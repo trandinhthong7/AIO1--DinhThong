@@ -1,0 +1,241 @@
+experiments:
+  - id: 1
+    name: payment_latency
+    fault_type: latency
+    target: payment-svc
+    hypothesis: |
+      Steady-state: probe pass-rate >= 99%, p99 latency < 500ms.
+      Injecting 500ms +/- 100ms delay on payment-svc network egress for 60s
+      should make the detector fire a latency anomaly within 30s and RCA
+      should pick payment-svc as root.
+    blast_radius:
+      target: 1 instance of payment-svc
+      duration_seconds: 60
+      traffic_percent: 100
+    rollback:
+      automatic: true
+      trigger_when: probe_pass_rate < 50% for 20s
+      method: tc qdisc del dev eth0 root
+    measurement:
+      metrics: [probe_pass_rate, p99_latency, detector_alerts, rca_root_service]
+      capture_window_seconds: 300
+    ground_truth:
+      expected_root_service: payment-svc
+      expected_fault_class: latency
+
+  - id: 2
+    name: payment_packet_loss
+    fault_type: network_loss
+    target: payment-svc
+    hypothesis: |
+      Steady-state: probe pass-rate >= 99%, payment error-rate < 1%.
+      Injecting 30% packet loss on payment-svc for 60s should increase
+      timeout and 5xx signals, detector should fire within 45s, and RCA
+      should identify payment-svc instead of checkout-svc.
+    blast_radius:
+      target: 1 instance of payment-svc
+      duration_seconds: 60
+      traffic_percent: 100
+    rollback:
+      automatic: true
+      trigger_when: probe_pass_rate < 50% for 20s
+      method: tc qdisc del dev eth0 root
+    measurement:
+      metrics: [probe_pass_rate, error_rate, timeout_count, rca_root_service]
+      capture_window_seconds: 300
+    ground_truth:
+      expected_root_service: payment-svc
+      expected_fault_class: network_loss
+
+  - id: 3
+    name: inventory_pod_kill
+    fault_type: availability
+    target: inventory-svc
+    hypothesis: |
+      Steady-state: inventory availability >= 99.5% and probe pass-rate >= 99%.
+      Killing one inventory-svc container every 60s should cause a short
+      availability anomaly, detector should fire within 60s, and RCA should
+      pick inventory-svc rather than api-gateway.
+    blast_radius:
+      target: 1 instance of inventory-svc
+      duration_seconds: 120
+      traffic_percent: 100
+    rollback:
+      automatic: true
+      trigger_when: inventory_available_replicas < 1 for 30s
+      method: docker compose up -d inventory-svc
+    measurement:
+      metrics: [probe_pass_rate, availability, restart_count, rca_root_service]
+      capture_window_seconds: 360
+    ground_truth:
+      expected_root_service: inventory-svc
+      expected_fault_class: availability
+
+  - id: 4
+    name: gateway_cpu_saturation
+    fault_type: cpu_saturation
+    target: api-gateway
+    hypothesis: |
+      Steady-state: gateway CPU < 70%, p99 latency < 500ms, probe pass-rate >= 99%.
+      Stressing api-gateway CPU to 90% for 90s should create a latency cascade
+      across downstream services, detector should fire within 60s, and RCA
+      should identify api-gateway as the common upstream bottleneck.
+    blast_radius:
+      target: 1 instance of api-gateway
+      duration_seconds: 90
+      traffic_percent: 100
+    rollback:
+      automatic: true
+      trigger_when: probe_pass_rate < 40% for 30s
+      method: pkill stress-ng
+    measurement:
+      metrics: [probe_pass_rate, cpu_usage, downstream_p99_latency, rca_root_service]
+      capture_window_seconds: 420
+    ground_truth:
+      expected_root_service: api-gateway
+      expected_fault_class: cpu_saturation
+
+  - id: 5
+    name: payment_db_memory_fill
+    fault_type: memory
+    target: payment-db
+    hypothesis: |
+      Steady-state: payment-db memory < 75%, connection pool saturation < 60%.
+      Filling memory to 95% for 90s should increase query latency and pool
+      wait time, detector should fire within 60s, and RCA should select
+      payment-db instead of payment-svc.
+    blast_radius:
+      target: 1 payment-db container
+      duration_seconds: 90
+      traffic_percent: 100
+    rollback:
+      automatic: true
+      trigger_when: payment_error_rate > 20% for 30s
+      method: pkill stress-ng
+    measurement:
+      metrics: [probe_pass_rate, db_memory_usage, connection_pool_wait, rca_root_service]
+      capture_window_seconds: 420
+    ground_truth:
+      expected_root_service: payment-db
+      expected_fault_class: memory
+
+  - id: 6
+    name: auth_clock_skew
+    fault_type: time_skew
+    target: auth-svc
+    hypothesis: |
+      Steady-state: auth JWT validation failures < 1% and probe pass-rate >= 99%.
+      Skewing auth-svc clock forward by 60s for 60s should create JWT or
+      certificate validation failures, detector should fire within 60s, and
+      RCA should pick auth-svc.
+    blast_radius:
+      target: 1 instance of auth-svc
+      duration_seconds: 60
+      traffic_percent: 100
+    rollback:
+      automatic: true
+      trigger_when: auth_error_rate > 15% for 30s
+      method: chronyc makestep
+    measurement:
+      metrics: [probe_pass_rate, jwt_error_rate, cert_error_count, rca_root_service]
+      capture_window_seconds: 300
+    ground_truth:
+      expected_root_service: auth-svc
+      expected_fault_class: time_skew
+
+  - id: 7
+    name: log_collector_disk_fill
+    fault_type: disk_fill
+    target: log-collector
+    hypothesis: |
+      Steady-state: log ingestion lag < 30s and disk usage < 80%.
+      Filling log-collector disk to 95% for 120s should increase ingestion lag
+      and trigger meta-monitoring within 90s, while user probe may remain
+      healthy. RCA should identify log-collector.
+    blast_radius:
+      target: 1 instance of log-collector
+      duration_seconds: 120
+      traffic_percent: 0
+    rollback:
+      automatic: true
+      trigger_when: disk_usage_percent > 98 for 20s
+      method: rm -f /tmp/chaos-fill
+    measurement:
+      metrics: [probe_pass_rate, log_ingestion_lag, disk_usage_percent, rca_root_service]
+      capture_window_seconds: 480
+    ground_truth:
+      expected_root_service: log-collector
+      expected_fault_class: disk_fill
+
+  - id: 8
+    name: frontend_gateway_partition
+    fault_type: network_partition
+    target: frontend
+    hypothesis: |
+      Steady-state: probe pass-rate >= 99%, checkout health endpoint returns
+      HTTP 200 in < 500ms. Partitioning frontend from api-gateway for 30s
+      should create all-downstream timeout symptoms, detector should fire
+      within 45s, and RCA should pick the edge between frontend and api-gateway.
+    blast_radius:
+      target: frontend to api-gateway edge
+      duration_seconds: 30
+      traffic_percent: 100
+    rollback:
+      automatic: true
+      trigger_when: probe_pass_rate < 30% for 15s
+      method: iptables -F
+    measurement:
+      metrics: [probe_pass_rate, gateway_timeout_rate, downstream_error_rate, rca_root_service]
+      capture_window_seconds: 300
+    ground_truth:
+      expected_root_service: api-gateway
+      expected_fault_class: network_partition
+
+  - id: 9
+    name: dns_lookup_latency
+    fault_type: dns_latency
+    target: dns-resolver
+    hypothesis: |
+      Steady-state: DNS lookup p99 < 100ms and probe pass-rate >= 99%.
+      Adding 2s DNS lookup latency for 90s should cause intermittent timeout
+      and retry symptoms, detector should fire within 90s, and topology-aware
+      RCA should point to dns-resolver.
+    blast_radius:
+      target: 1 dns-resolver container
+      duration_seconds: 90
+      traffic_percent: 100
+    rollback:
+      automatic: true
+      trigger_when: probe_pass_rate < 50% for 30s
+      method: toxiproxy-cli toxic remove dns_latency
+    measurement:
+      metrics: [probe_pass_rate, dns_lookup_p99, timeout_rate, rca_root_service]
+      capture_window_seconds: 420
+    ground_truth:
+      expected_root_service: dns-resolver
+      expected_fault_class: dns_latency
+
+  - id: 10
+    name: checkout_retry_storm
+    fault_type: http_error
+    target: checkout-svc
+    hypothesis: |
+      Steady-state: probe pass-rate >= 99%.
+      Injecting 20% HTTP 500 on checkout-svc responses for 90s should amplify
+      retries toward payment-svc and inventory-svc. Pipeline must not pick
+      checkout-svc as root; RCA should pick the upstream dependency with the
+      strongest queue or saturation evidence.
+    blast_radius:
+      target: 100% of checkout-svc requests
+      duration_seconds: 90
+      traffic_percent: 100
+    rollback:
+      automatic: true
+      trigger_when: probe_pass_rate < 30% for 30s
+      method: toxiproxy-cli toxic remove checkout_500
+    measurement:
+      metrics: [probe_pass_rate, retry_count, upstream_queue_depth, rca_root_service]
+      capture_window_seconds: 600
+    ground_truth:
+      expected_root_service: NOT checkout-svc
+      expected_fault_class: cascade_retry

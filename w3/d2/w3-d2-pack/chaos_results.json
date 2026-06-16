@@ -1,0 +1,381 @@
+[
+  {
+    "id": 1,
+    "name": "payment_latency",
+    "fault_type": "latency",
+    "detected": true,
+    "mttd": 24,
+    "rca_service": "payment-svc",
+    "rca_correct": true,
+    "observed_at_ts": 1781607389,
+    "mode": "simulate",
+    "inject_cmd": [
+      "pumba",
+      "netem",
+      "--duration",
+      "60s",
+      "delay",
+      "--time",
+      "500",
+      "--jitter",
+      "100",
+      "payment-svc"
+    ],
+    "raw": {
+      "alerts": [
+        {
+          "fire_ts": 1717200624,
+          "service": "payment-svc",
+          "fault_class": "latency"
+        }
+      ],
+      "rca": {
+        "root_service": "payment-svc",
+        "confidence": 0.82,
+        "evidence": [
+          "simulated starter-pack run; no real stack shipped"
+        ]
+      },
+      "mttd_seconds": 24,
+      "detected": true
+    }
+  },
+  {
+    "id": 2,
+    "name": "payment_packet_loss",
+    "fault_type": "network_loss",
+    "detected": true,
+    "mttd": 38,
+    "rca_service": "payment-svc",
+    "rca_correct": true,
+    "observed_at_ts": 1781607389,
+    "mode": "simulate",
+    "inject_cmd": [
+      "pumba",
+      "netem",
+      "--duration",
+      "60s",
+      "loss",
+      "--percent",
+      "30",
+      "payment-svc"
+    ],
+    "raw": {
+      "alerts": [
+        {
+          "fire_ts": 1717201238,
+          "service": "payment-svc",
+          "fault_class": "network_loss"
+        }
+      ],
+      "rca": {
+        "root_service": "payment-svc",
+        "confidence": 0.82,
+        "evidence": [
+          "simulated starter-pack run; no real stack shipped"
+        ]
+      },
+      "mttd_seconds": 38,
+      "detected": true
+    }
+  },
+  {
+    "id": 3,
+    "name": "inventory_pod_kill",
+    "fault_type": "availability",
+    "detected": true,
+    "mttd": 52,
+    "rca_service": "inventory-svc",
+    "rca_correct": true,
+    "observed_at_ts": 1781607389,
+    "mode": "simulate",
+    "inject_cmd": [
+      "pumba",
+      "kill",
+      "--signal",
+      "SIGKILL",
+      "--interval",
+      "60s",
+      "--duration",
+      "120s",
+      "inventory-svc"
+    ],
+    "raw": {
+      "alerts": [
+        {
+          "fire_ts": 1717201852,
+          "service": "inventory-svc",
+          "fault_class": "availability"
+        }
+      ],
+      "rca": {
+        "root_service": "inventory-svc",
+        "confidence": 0.82,
+        "evidence": [
+          "simulated starter-pack run; no real stack shipped"
+        ]
+      },
+      "mttd_seconds": 52,
+      "detected": true
+    }
+  },
+  {
+    "id": 4,
+    "name": "gateway_cpu_saturation",
+    "fault_type": "cpu_saturation",
+    "detected": true,
+    "mttd": 46,
+    "rca_service": "api-gateway",
+    "rca_correct": true,
+    "observed_at_ts": 1781607389,
+    "mode": "simulate",
+    "inject_cmd": [
+      "pumba",
+      "stress",
+      "--duration",
+      "90s",
+      "--stressors",
+      "--cpu 4 --cpu-load 90",
+      "api-gateway"
+    ],
+    "raw": {
+      "alerts": [
+        {
+          "fire_ts": 1717202446,
+          "service": "api-gateway",
+          "fault_class": "cpu_saturation"
+        }
+      ],
+      "rca": {
+        "root_service": "api-gateway",
+        "confidence": 0.82,
+        "evidence": [
+          "simulated starter-pack run; no real stack shipped"
+        ]
+      },
+      "mttd_seconds": 46,
+      "detected": true
+    }
+  },
+  {
+    "id": 5,
+    "name": "payment_db_memory_fill",
+    "fault_type": "memory",
+    "detected": true,
+    "mttd": 64,
+    "rca_service": "payment-db",
+    "rca_correct": true,
+    "observed_at_ts": 1781607389,
+    "mode": "simulate",
+    "inject_cmd": [
+      "pumba",
+      "stress",
+      "--duration",
+      "90s",
+      "--stressors",
+      "--vm 1 --vm-bytes 95%",
+      "payment-db"
+    ],
+    "raw": {
+      "alerts": [
+        {
+          "fire_ts": 1717203064,
+          "service": "payment-db",
+          "fault_class": "memory"
+        }
+      ],
+      "rca": {
+        "root_service": "payment-db",
+        "confidence": 0.82,
+        "evidence": [
+          "simulated starter-pack run; no real stack shipped"
+        ]
+      },
+      "mttd_seconds": 64,
+      "detected": true
+    }
+  },
+  {
+    "id": 6,
+    "name": "auth_clock_skew",
+    "fault_type": "time_skew",
+    "detected": false,
+    "mttd": null,
+    "rca_service": null,
+    "rca_correct": false,
+    "observed_at_ts": 1781607389,
+    "mode": "simulate",
+    "inject_cmd": [
+      "docker",
+      "exec",
+      "auth-svc",
+      "sh",
+      "-lc",
+      "date -s '+60 seconds'; sleep 60; chronyc makestep || true"
+    ],
+    "raw": {
+      "alerts": [],
+      "rca": {
+        "root_service": null,
+        "confidence": 0.0,
+        "evidence": [
+          "simulated starter-pack run; no real stack shipped"
+        ]
+      },
+      "mttd_seconds": null,
+      "detected": false
+    }
+  },
+  {
+    "id": 7,
+    "name": "log_collector_disk_fill",
+    "fault_type": "disk_fill",
+    "detected": false,
+    "mttd": null,
+    "rca_service": null,
+    "rca_correct": false,
+    "observed_at_ts": 1781607389,
+    "mode": "simulate",
+    "inject_cmd": [
+      "docker",
+      "exec",
+      "log-collector",
+      "sh",
+      "-lc",
+      "fallocate -l 4G /tmp/chaos-fill || dd if=/dev/zero of=/tmp/chaos-fill bs=1M count=4096; sleep 120"
+    ],
+    "raw": {
+      "alerts": [],
+      "rca": {
+        "root_service": null,
+        "confidence": 0.0,
+        "evidence": [
+          "simulated starter-pack run; no real stack shipped"
+        ]
+      },
+      "mttd_seconds": null,
+      "detected": false
+    }
+  },
+  {
+    "id": 8,
+    "name": "frontend_gateway_partition",
+    "fault_type": "network_partition",
+    "detected": true,
+    "mttd": 31,
+    "rca_service": "api-gateway",
+    "rca_correct": true,
+    "observed_at_ts": 1781607389,
+    "mode": "simulate",
+    "inject_cmd": [
+      "docker",
+      "exec",
+      "frontend",
+      "sh",
+      "-lc",
+      "iptables -A OUTPUT -d api-gateway -j DROP; sleep 30; iptables -D OUTPUT -d api-gateway -j DROP"
+    ],
+    "raw": {
+      "alerts": [
+        {
+          "fire_ts": 1717204831,
+          "service": "api-gateway",
+          "fault_class": "network_partition"
+        }
+      ],
+      "rca": {
+        "root_service": "api-gateway",
+        "confidence": 0.82,
+        "evidence": [
+          "simulated starter-pack run; no real stack shipped"
+        ]
+      },
+      "mttd_seconds": 31,
+      "detected": true
+    }
+  },
+  {
+    "id": 9,
+    "name": "dns_lookup_latency",
+    "fault_type": "dns_latency",
+    "detected": true,
+    "mttd": 89,
+    "rca_service": "api-gateway",
+    "rca_correct": false,
+    "observed_at_ts": 1781607389,
+    "mode": "simulate",
+    "inject_cmd": [
+      "toxiproxy-cli",
+      "toxic",
+      "add",
+      "dns-resolver",
+      "-n",
+      "dns_latency",
+      "-t",
+      "latency",
+      "-a",
+      "latency=2000",
+      "-a",
+      "jitter=200"
+    ],
+    "raw": {
+      "alerts": [
+        {
+          "fire_ts": 1717205489,
+          "service": "api-gateway",
+          "fault_class": "dns_latency"
+        }
+      ],
+      "rca": {
+        "root_service": "api-gateway",
+        "confidence": 0.82,
+        "evidence": [
+          "simulated starter-pack run; no real stack shipped"
+        ]
+      },
+      "mttd_seconds": 89,
+      "detected": true
+    }
+  },
+  {
+    "id": 10,
+    "name": "checkout_retry_storm",
+    "fault_type": "http_error",
+    "detected": true,
+    "mttd": 41,
+    "rca_service": "checkout-svc",
+    "rca_correct": false,
+    "observed_at_ts": 1781607389,
+    "mode": "simulate",
+    "inject_cmd": [
+      "toxiproxy-cli",
+      "toxic",
+      "add",
+      "checkout-svc",
+      "-n",
+      "checkout_500",
+      "-t",
+      "limit_data",
+      "-a",
+      "bytes=0"
+    ],
+    "raw": {
+      "alerts": [
+        {
+          "fire_ts": 1717206041,
+          "service": "checkout-svc",
+          "fault_class": "cascade_retry"
+        }
+      ],
+      "rca": {
+        "root_service": "checkout-svc",
+        "confidence": 0.82,
+        "evidence": [
+          "simulated starter-pack run; no real stack shipped"
+        ]
+      },
+      "mttd_seconds": 41,
+      "detected": true
+    }
+  }
+]

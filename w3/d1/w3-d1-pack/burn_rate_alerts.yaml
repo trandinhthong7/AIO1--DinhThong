@@ -1,0 +1,117 @@
+groups:
+- name: frontend-slo
+  rules:
+  - alert: frontend_burn_rate_tier1
+    expr: |
+      (sum(rate(frontend_rum_fail_total[1h])) / sum(rate(frontend_rum_events_total[1h]))) / (1 - 0.99) >= 5
+      and
+      (sum(rate(frontend_rum_fail_total[5m])) / sum(rate(frontend_rum_events_total[5m]))) / (1 - 0.99) >= 5
+    labels:
+      severity: page
+      tier: "1"
+      service: frontend
+    annotations:
+      summary: "Frontend SLO burn rate tier 1"
+      runbook: "https://runbooks.example.com/frontend-slo-burn"
+  - alert: frontend_burn_rate_tier2
+    expr: |
+      (sum(rate(frontend_rum_fail_total[6h])) / sum(rate(frontend_rum_events_total[6h]))) / (1 - 0.99) >= 4
+      and
+      (sum(rate(frontend_rum_fail_total[30m])) / sum(rate(frontend_rum_events_total[30m]))) / (1 - 0.99) >= 4
+    labels:
+      severity: page
+      tier: "2"
+      service: frontend
+    annotations:
+      summary: "Frontend SLO burn rate tier 2"
+      runbook: "https://runbooks.example.com/frontend-slo-burn"
+  - alert: frontend_burn_rate_tier3
+    expr: |
+      (sum(rate(frontend_rum_fail_total[3d])) / sum(rate(frontend_rum_events_total[3d]))) / (1 - 0.99) >= 1
+      and
+      (sum(rate(frontend_rum_fail_total[6h])) / sum(rate(frontend_rum_events_total[6h]))) / (1 - 0.99) >= 1
+    labels:
+      severity: ticket
+      tier: "3"
+      service: frontend
+    annotations:
+      summary: "Frontend SLO burn rate tier 3"
+      runbook: "https://runbooks.example.com/frontend-slo-burn"
+
+- name: api-slo
+  rules:
+  - alert: api_burn_rate_tier1
+    expr: |
+      (sum(rate(http_requests_fail_total[1h])) / sum(rate(http_requests_total[1h]))) / (1 - 0.999) >= 5
+      and
+      (sum(rate(http_requests_fail_total[5m])) / sum(rate(http_requests_total[5m]))) / (1 - 0.999) >= 5
+    labels:
+      severity: page
+      tier: "1"
+      service: api
+    annotations:
+      summary: "API SLO burn rate tier 1"
+      runbook: "https://runbooks.example.com/api-slo-burn"
+  - alert: api_burn_rate_tier2
+    expr: |
+      (sum(rate(http_requests_fail_total[6h])) / sum(rate(http_requests_total[6h]))) / (1 - 0.999) >= 4
+      and
+      (sum(rate(http_requests_fail_total[30m])) / sum(rate(http_requests_total[30m]))) / (1 - 0.999) >= 4
+    labels:
+      severity: page
+      tier: "2"
+      service: api
+    annotations:
+      summary: "API SLO burn rate tier 2"
+      runbook: "https://runbooks.example.com/api-slo-burn"
+  - alert: api_burn_rate_tier3
+    expr: |
+      (sum(rate(http_requests_fail_total[3d])) / sum(rate(http_requests_total[3d]))) / (1 - 0.999) >= 1
+      and
+      (sum(rate(http_requests_fail_total[6h])) / sum(rate(http_requests_total[6h]))) / (1 - 0.999) >= 1
+    labels:
+      severity: ticket
+      tier: "3"
+      service: api
+    annotations:
+      summary: "API SLO burn rate tier 3"
+      runbook: "https://runbooks.example.com/api-slo-burn"
+
+- name: db-slo
+  rules:
+  - alert: db_burn_rate_tier1
+    expr: |
+      (sum(rate(db_query_fail_total[1h])) / sum(rate(db_query_total[1h]))) / (1 - 0.9995) >= 5
+      and
+      (sum(rate(db_query_fail_total[5m])) / sum(rate(db_query_total[5m]))) / (1 - 0.9995) >= 5
+    labels:
+      severity: page
+      tier: "1"
+      service: db
+    annotations:
+      summary: "DB SLO burn rate tier 1"
+      runbook: "https://runbooks.example.com/db-slo-burn"
+  - alert: db_burn_rate_tier2
+    expr: |
+      (sum(rate(db_query_fail_total[6h])) / sum(rate(db_query_total[6h]))) / (1 - 0.9995) >= 4
+      and
+      (sum(rate(db_query_fail_total[30m])) / sum(rate(db_query_total[30m]))) / (1 - 0.9995) >= 4
+    labels:
+      severity: page
+      tier: "2"
+      service: db
+    annotations:
+      summary: "DB SLO burn rate tier 2"
+      runbook: "https://runbooks.example.com/db-slo-burn"
+  - alert: db_burn_rate_tier3
+    expr: |
+      (sum(rate(db_query_fail_total[3d])) / sum(rate(db_query_total[3d]))) / (1 - 0.9995) >= 1
+      and
+      (sum(rate(db_query_fail_total[6h])) / sum(rate(db_query_total[6h]))) / (1 - 0.9995) >= 1
+    labels:
+      severity: ticket
+      tier: "3"
+      service: db
+    annotations:
+      summary: "DB SLO burn rate tier 3"
+      runbook: "https://runbooks.example.com/db-slo-burn"

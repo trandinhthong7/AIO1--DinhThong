@@ -1,0 +1,47 @@
+# macOS / editor noise
+.DS_Store
+.idea/
+.vscode/
+
+# Python / local environments
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Large generated lab data
+**/data/*.jsonl
+**/data/*.parquet
+**/data/*.csv.gz
+**/data/*.json.gz
+**/data/*.log
+
+# Prometheus / Grafana / Docker runtime data
+**/prometheus-data/
+**/grafana-data/
+**/alertmanager-data/
+**/docker-volumes/
+**/volumes/
+
+# Generated bulky artifacts
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.sqlite
+*.sqlite3
+*.db
+
+# Generic logs, except small submission evidence below
+*.log
+!d2/w3-d2-pack/probe.log
+
+# Keep required small submission outputs trackable
+!**/baseline.json
+!**/validation_report.json
+!**/chaos_results.json
+!**/incident_window.csv
+!**/topology.yaml
