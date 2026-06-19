@@ -40,7 +40,7 @@ __pycache__/
 # Generic logs, except small submission evidence below
 *.log
 !d2/w3-d2-pack/probe.log
-!d4-5/lab-closed-loop/tran-dinh-thong/self-test.log
+!d4-5/lab-closed-loop/submission/self-test.log
 
 # Keep required small submission outputs trackable
 !**/baseline.json
