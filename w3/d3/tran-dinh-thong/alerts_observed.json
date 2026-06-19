@@ -1,0 +1,23 @@
+[
+    {
+        "name": "InstanceUnavailable",
+        "service": "billing",
+        "state": "exited",
+        "fire_ts": 1781806375,
+        "severity": "warning"
+    },
+    {
+        "name": "InstanceUnavailable",
+        "service": "index",
+        "state": "exited",
+        "fire_ts": 1781806375,
+        "severity": "critical"
+    },
+    {
+        "name": "InstanceUnavailable",
+        "service": "placement",
+        "state": "exited",
+        "fire_ts": 1781806375,
+        "severity": "critical"
+    }
+]

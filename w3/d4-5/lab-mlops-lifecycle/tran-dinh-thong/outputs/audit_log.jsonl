@@ -1,0 +1,15 @@
+{"timestamp": "2026-06-18T09:12:20.718084+00:00", "event": "holdout_validation", "v2_precision": 0.0, "v2_recall": 0.0, "v2_f1": 0.0}
+{"timestamp": "2026-06-18T09:12:22.329367+00:00", "event": "retrain_registered_staging", "version": "2", "drift_score": 1.0, "training_rows": 5328, "run_id": "a80d52b5c8f74d10b87e08d03c276f91"}
+{"timestamp": "2026-06-18T09:12:22.332114+00:00", "event": "promotion_approved", "promoted_version": "2", "previous_version": 1}
+{"timestamp": "2026-06-18T09:12:22.349023+00:00", "event": "post_deploy_cycle", "cycle": 1, "version": "2", "precision": 1.0, "recall": 1.0, "f1": 1.0}
+{"timestamp": "2026-06-18T09:12:22.351934+00:00", "event": "auto_rollback_v2_to_v1", "demoted_version": "2", "restored_version": "1", "trigger_precision": 1.0, "cycle": 1}
+{"timestamp": "2026-06-18T10:08:43.988923+00:00", "event": "holdout_validation", "v2_precision": 0.0, "v2_recall": 0.0, "v2_f1": 0.0, "v1_precision": 0.0, "v1_recall": 0.0}
+{"timestamp": "2026-06-18T10:08:45.729980+00:00", "event": "retrain_registered_staging", "version": "3", "drift_score": 1.0, "training_rows": 5328, "run_id": "23653bff6ae94026bb786bc9f423cdba"}
+{"timestamp": "2026-06-18T10:08:45.733272+00:00", "event": "promotion_approved", "promoted_version": "3", "previous_version": 1}
+{"timestamp": "2026-06-18T10:08:45.757960+00:00", "event": "post_deploy_cycle", "cycle": 1, "version": "3", "precision": 1.0, "recall": 1.0, "f1": 1.0}
+{"timestamp": "2026-06-18T10:08:45.761371+00:00", "event": "auto_rollback_v2_to_v1", "demoted_version": "3", "restored_version": "1", "trigger_precision": 1.0, "cycle": 1}
+{"timestamp": "2026-06-18T12:16:07.376760+00:00", "event": "holdout_validation", "v2_precision": 0.0, "v2_recall": 0.0, "v2_f1": 0.0, "v1_precision": 0.0, "v1_recall": 0.0}
+{"timestamp": "2026-06-18T12:16:09.244115+00:00", "event": "retrain_registered_staging", "version": "4", "drift_score": 1.0, "training_rows": 5328, "run_id": "2069e27af1c84b3a9aacdf735c9bcf5f"}
+{"timestamp": "2026-06-18T12:16:09.249196+00:00", "event": "promotion_approved", "promoted_version": "4", "previous_version": 1}
+{"timestamp": "2026-06-18T12:16:09.265477+00:00", "event": "post_deploy_cycle", "cycle": 1, "version": "4", "precision": 1.0, "recall": 1.0, "f1": 1.0}
+{"timestamp": "2026-06-18T12:16:09.269314+00:00", "event": "auto_rollback_v2_to_v1", "demoted_version": "4", "restored_version": "1", "trigger_precision": 1.0, "cycle": 1}

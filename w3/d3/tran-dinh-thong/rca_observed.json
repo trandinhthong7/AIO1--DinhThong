@@ -1,0 +1,11 @@
+{
+    "root_service": "billing",
+    "confidence": 0.42,
+    "pattern": "simultaneous_multi_service_down",
+    "evidence": [
+        "billing changed to exited at 1781806375",
+        "index changed to exited at 1781806375",
+        "placement changed to exited at 1781806375"
+    ],
+    "known_limitation": "No operator-command audit signal is available."
+}

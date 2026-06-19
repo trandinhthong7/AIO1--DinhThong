@@ -1,0 +1,129 @@
+{"ts": "2026-06-18T09:15:59.678740+00:00", "level": "INFO", "event_type": "SELF_TEST_START", "service": "all", "action": "six_scenarios", "result": "started"}
+{"ts": "2026-06-18T09:15:59.679077+00:00", "level": "INFO", "event_type": "ALERT_DETECTED", "service": "payment-svc", "action": "HighLatency", "result": "detected", "severity": "test"}
+{"ts": "2026-06-18T09:15:59.679187+00:00", "level": "INFO", "event_type": "DECIDE_RUNBOOK", "service": "payment-svc", "action": "runbooks/restart_service.sh", "result": "selected", "alertname": "HighLatency"}
+{"ts": "2026-06-18T09:15:59.679245+00:00", "level": "INFO", "event_type": "BLAST_RADIUS_OK", "service": "payment-svc", "action": "runbooks/restart_service.sh", "result": "pass"}
+{"ts": "2026-06-18T09:15:59.679345+00:00", "level": "INFO", "event_type": "RUNBOOK_EXEC", "service": "payment-svc", "action": "runbooks/restart_service.sh", "result": "started", "dry_run": true}
+{"ts": "2026-06-18T09:15:59.734425+00:00", "level": "INFO", "event_type": "RUNBOOK_RESULT", "service": "payment-svc", "action": "runbooks/restart_service.sh", "result": "success", "returncode": 0}
+{"ts": "2026-06-18T09:15:59.734712+00:00", "level": "INFO", "event_type": "DRY_RUN_PASS", "service": "payment-svc", "action": "runbooks/restart_service.sh", "result": "pass"}
+{"ts": "2026-06-18T09:15:59.734848+00:00", "level": "INFO", "event_type": "RUNBOOK_EXEC", "service": "payment-svc", "action": "runbooks/restart_service.sh", "result": "started", "dry_run": false}
+{"ts": "2026-06-18T09:15:59.789018+00:00", "level": "INFO", "event_type": "RUNBOOK_RESULT", "service": "payment-svc", "action": "runbooks/restart_service.sh", "result": "success", "returncode": 0}
+{"ts": "2026-06-18T09:15:59.789251+00:00", "level": "INFO", "event_type": "ACTION_EXECUTED", "service": "payment-svc", "action": "runbooks/restart_service.sh", "result": "success"}
+{"ts": "2026-06-18T09:15:59.789355+00:00", "level": "INFO", "event_type": "VERIFY_PASS", "service": "payment-svc", "action": "prometheus_verify", "result": "pass", "samples": 3}
+{"ts": "2026-06-18T09:15:59.789444+00:00", "level": "INFO", "event_type": "ACTION_SUCCESS", "service": "payment-svc", "action": "runbooks/restart_service.sh", "result": "success", "alertname": "HighLatency"}
+{"ts": "2026-06-18T09:15:59.789539+00:00", "level": "INFO", "event_type": "ALERT_DETECTED", "service": "checkout-svc", "action": "InstanceDown", "result": "detected", "severity": "test"}
+{"ts": "2026-06-18T09:15:59.789661+00:00", "level": "INFO", "event_type": "DECIDE_RUNBOOK", "service": "checkout-svc", "action": "runbooks/restart_service.sh", "result": "selected", "alertname": "InstanceDown"}
+{"ts": "2026-06-18T09:15:59.789723+00:00", "level": "INFO", "event_type": "BLAST_RADIUS_OK", "service": "checkout-svc", "action": "runbooks/restart_service.sh", "result": "pass"}
+{"ts": "2026-06-18T09:15:59.789812+00:00", "level": "INFO", "event_type": "RUNBOOK_EXEC", "service": "checkout-svc", "action": "runbooks/restart_service.sh", "result": "started", "dry_run": true}
+{"ts": "2026-06-18T09:15:59.842676+00:00", "level": "INFO", "event_type": "RUNBOOK_RESULT", "service": "checkout-svc", "action": "runbooks/restart_service.sh", "result": "success", "returncode": 0}
+{"ts": "2026-06-18T09:15:59.843049+00:00", "level": "INFO", "event_type": "DRY_RUN_PASS", "service": "checkout-svc", "action": "runbooks/restart_service.sh", "result": "pass"}
+{"ts": "2026-06-18T09:15:59.843175+00:00", "level": "INFO", "event_type": "RUNBOOK_EXEC", "service": "checkout-svc", "action": "runbooks/restart_service.sh", "result": "started", "dry_run": false}
+{"ts": "2026-06-18T09:15:59.894094+00:00", "level": "INFO", "event_type": "RUNBOOK_RESULT", "service": "checkout-svc", "action": "runbooks/restart_service.sh", "result": "success", "returncode": 0}
+{"ts": "2026-06-18T09:15:59.894396+00:00", "level": "INFO", "event_type": "ACTION_EXECUTED", "service": "checkout-svc", "action": "runbooks/restart_service.sh", "result": "success"}
+{"ts": "2026-06-18T09:15:59.894597+00:00", "level": "INFO", "event_type": "VERIFY_FAIL", "service": "checkout-svc", "action": "prometheus_verify", "result": "fail", "samples": 3}
+{"ts": "2026-06-18T09:15:59.894804+00:00", "level": "WARNING", "event_type": "ROLLBACK_TRIGGERED", "service": "checkout-svc", "action": "runbooks/restart_service.sh", "result": "started"}
+{"ts": "2026-06-18T09:15:59.895052+00:00", "level": "INFO", "event_type": "RUNBOOK_EXEC", "service": "checkout-svc", "action": "runbooks/restart_service.sh", "result": "started", "dry_run": false}
+{"ts": "2026-06-18T09:15:59.950312+00:00", "level": "INFO", "event_type": "RUNBOOK_RESULT", "service": "checkout-svc", "action": "runbooks/restart_service.sh", "result": "success", "returncode": 0}
+{"ts": "2026-06-18T09:15:59.950763+00:00", "level": "INFO", "event_type": "ROLLBACK_EXECUTED", "service": "checkout-svc", "action": "runbooks/restart_service.sh", "result": "success"}
+{"ts": "2026-06-18T09:15:59.950902+00:00", "level": "INFO", "event_type": "VERIFY_PASS", "service": "checkout-svc", "action": "prometheus_verify", "result": "pass", "samples": 3}
+{"ts": "2026-06-18T09:15:59.950995+00:00", "level": "INFO", "event_type": "ROLLBACK_VERIFY_PASS", "service": "checkout-svc", "action": "runbooks/restart_service.sh", "result": "pass"}
+{"ts": "2026-06-18T09:15:59.951169+00:00", "level": "INFO", "event_type": "ALERT_DETECTED", "service": "circuit-test-0", "action": "InstanceDown", "result": "detected", "severity": "test"}
+{"ts": "2026-06-18T09:15:59.951364+00:00", "level": "INFO", "event_type": "DECIDE_RUNBOOK", "service": "circuit-test-0", "action": "runbooks/restart_service.sh", "result": "selected", "alertname": "InstanceDown"}
+{"ts": "2026-06-18T09:15:59.951501+00:00", "level": "INFO", "event_type": "BLAST_RADIUS_OK", "service": "circuit-test-0", "action": "runbooks/restart_service.sh", "result": "pass"}
+{"ts": "2026-06-18T09:15:59.951628+00:00", "level": "INFO", "event_type": "RUNBOOK_EXEC", "service": "circuit-test-0", "action": "runbooks/restart_service.sh", "result": "started", "dry_run": true}
+{"ts": "2026-06-18T09:16:00.006768+00:00", "level": "INFO", "event_type": "RUNBOOK_RESULT", "service": "circuit-test-0", "action": "runbooks/restart_service.sh", "result": "success", "returncode": 0}
+{"ts": "2026-06-18T09:16:00.007386+00:00", "level": "INFO", "event_type": "DRY_RUN_PASS", "service": "circuit-test-0", "action": "runbooks/restart_service.sh", "result": "pass"}
+{"ts": "2026-06-18T09:16:00.007643+00:00", "level": "INFO", "event_type": "RUNBOOK_EXEC", "service": "circuit-test-0", "action": "runbooks/restart_service.sh", "result": "started", "dry_run": false}
+{"ts": "2026-06-18T09:16:00.058406+00:00", "level": "INFO", "event_type": "RUNBOOK_RESULT", "service": "circuit-test-0", "action": "runbooks/restart_service.sh", "result": "success", "returncode": 0}
+{"ts": "2026-06-18T09:16:00.059378+00:00", "level": "INFO", "event_type": "ACTION_EXECUTED", "service": "circuit-test-0", "action": "runbooks/restart_service.sh", "result": "success"}
+{"ts": "2026-06-18T09:16:00.060087+00:00", "level": "INFO", "event_type": "VERIFY_FAIL", "service": "circuit-test-0", "action": "prometheus_verify", "result": "fail", "samples": 3}
+{"ts": "2026-06-18T09:16:00.060401+00:00", "level": "WARNING", "event_type": "ROLLBACK_TRIGGERED", "service": "circuit-test-0", "action": "runbooks/restart_service.sh", "result": "started"}
+{"ts": "2026-06-18T09:16:00.060805+00:00", "level": "INFO", "event_type": "RUNBOOK_EXEC", "service": "circuit-test-0", "action": "runbooks/restart_service.sh", "result": "started", "dry_run": false}
+{"ts": "2026-06-18T09:16:00.115994+00:00", "level": "INFO", "event_type": "RUNBOOK_RESULT", "service": "circuit-test-0", "action": "runbooks/restart_service.sh", "result": "success", "returncode": 0}
+{"ts": "2026-06-18T09:16:00.116435+00:00", "level": "INFO", "event_type": "ROLLBACK_EXECUTED", "service": "circuit-test-0", "action": "runbooks/restart_service.sh", "result": "success"}
+{"ts": "2026-06-18T09:16:00.116552+00:00", "level": "INFO", "event_type": "VERIFY_PASS", "service": "circuit-test-0", "action": "prometheus_verify", "result": "pass", "samples": 3}
+{"ts": "2026-06-18T09:16:00.116639+00:00", "level": "INFO", "event_type": "ROLLBACK_VERIFY_PASS", "service": "circuit-test-0", "action": "runbooks/restart_service.sh", "result": "pass"}
+{"ts": "2026-06-18T09:16:00.116884+00:00", "level": "INFO", "event_type": "ALERT_DETECTED", "service": "circuit-test-1", "action": "InstanceDown", "result": "detected", "severity": "test"}
+{"ts": "2026-06-18T09:16:00.117059+00:00", "level": "INFO", "event_type": "DECIDE_RUNBOOK", "service": "circuit-test-1", "action": "runbooks/restart_service.sh", "result": "selected", "alertname": "InstanceDown"}
+{"ts": "2026-06-18T09:16:00.117214+00:00", "level": "INFO", "event_type": "BLAST_RADIUS_OK", "service": "circuit-test-1", "action": "runbooks/restart_service.sh", "result": "pass"}
+{"ts": "2026-06-18T09:16:00.117340+00:00", "level": "INFO", "event_type": "RUNBOOK_EXEC", "service": "circuit-test-1", "action": "runbooks/restart_service.sh", "result": "started", "dry_run": true}
+{"ts": "2026-06-18T09:16:00.172485+00:00", "level": "INFO", "event_type": "RUNBOOK_RESULT", "service": "circuit-test-1", "action": "runbooks/restart_service.sh", "result": "success", "returncode": 0}
+{"ts": "2026-06-18T09:16:00.172883+00:00", "level": "INFO", "event_type": "DRY_RUN_PASS", "service": "circuit-test-1", "action": "runbooks/restart_service.sh", "result": "pass"}
+{"ts": "2026-06-18T09:16:00.173047+00:00", "level": "INFO", "event_type": "RUNBOOK_EXEC", "service": "circuit-test-1", "action": "runbooks/restart_service.sh", "result": "started", "dry_run": false}
+{"ts": "2026-06-18T09:16:00.225028+00:00", "level": "INFO", "event_type": "RUNBOOK_RESULT", "service": "circuit-test-1", "action": "runbooks/restart_service.sh", "result": "success", "returncode": 0}
+{"ts": "2026-06-18T09:16:00.227235+00:00", "level": "INFO", "event_type": "ACTION_EXECUTED", "service": "circuit-test-1", "action": "runbooks/restart_service.sh", "result": "success"}
+{"ts": "2026-06-18T09:16:00.228046+00:00", "level": "INFO", "event_type": "VERIFY_FAIL", "service": "circuit-test-1", "action": "prometheus_verify", "result": "fail", "samples": 3}
+{"ts": "2026-06-18T09:16:00.228654+00:00", "level": "WARNING", "event_type": "ROLLBACK_TRIGGERED", "service": "circuit-test-1", "action": "runbooks/restart_service.sh", "result": "started"}
+{"ts": "2026-06-18T09:16:00.228861+00:00", "level": "INFO", "event_type": "RUNBOOK_EXEC", "service": "circuit-test-1", "action": "runbooks/restart_service.sh", "result": "started", "dry_run": false}
+{"ts": "2026-06-18T09:16:00.283050+00:00", "level": "INFO", "event_type": "RUNBOOK_RESULT", "service": "circuit-test-1", "action": "runbooks/restart_service.sh", "result": "success", "returncode": 0}
+{"ts": "2026-06-18T09:16:00.283536+00:00", "level": "INFO", "event_type": "ROLLBACK_EXECUTED", "service": "circuit-test-1", "action": "runbooks/restart_service.sh", "result": "success"}
+{"ts": "2026-06-18T09:16:00.283723+00:00", "level": "INFO", "event_type": "VERIFY_PASS", "service": "circuit-test-1", "action": "prometheus_verify", "result": "pass", "samples": 3}
+{"ts": "2026-06-18T09:16:00.283871+00:00", "level": "INFO", "event_type": "ROLLBACK_VERIFY_PASS", "service": "circuit-test-1", "action": "runbooks/restart_service.sh", "result": "pass"}
+{"ts": "2026-06-18T09:16:00.284154+00:00", "level": "INFO", "event_type": "ALERT_DETECTED", "service": "circuit-test-2", "action": "InstanceDown", "result": "detected", "severity": "test"}
+{"ts": "2026-06-18T09:16:00.284434+00:00", "level": "INFO", "event_type": "DECIDE_RUNBOOK", "service": "circuit-test-2", "action": "runbooks/restart_service.sh", "result": "selected", "alertname": "InstanceDown"}
+{"ts": "2026-06-18T09:16:00.284586+00:00", "level": "INFO", "event_type": "BLAST_RADIUS_OK", "service": "circuit-test-2", "action": "runbooks/restart_service.sh", "result": "pass"}
+{"ts": "2026-06-18T09:16:00.284736+00:00", "level": "INFO", "event_type": "RUNBOOK_EXEC", "service": "circuit-test-2", "action": "runbooks/restart_service.sh", "result": "started", "dry_run": true}
+{"ts": "2026-06-18T09:16:00.339904+00:00", "level": "INFO", "event_type": "RUNBOOK_RESULT", "service": "circuit-test-2", "action": "runbooks/restart_service.sh", "result": "success", "returncode": 0}
+{"ts": "2026-06-18T09:16:00.340469+00:00", "level": "INFO", "event_type": "DRY_RUN_PASS", "service": "circuit-test-2", "action": "runbooks/restart_service.sh", "result": "pass"}
+{"ts": "2026-06-18T09:16:00.340720+00:00", "level": "INFO", "event_type": "RUNBOOK_EXEC", "service": "circuit-test-2", "action": "runbooks/restart_service.sh", "result": "started", "dry_run": false}
+{"ts": "2026-06-18T09:16:00.393312+00:00", "level": "INFO", "event_type": "RUNBOOK_RESULT", "service": "circuit-test-2", "action": "runbooks/restart_service.sh", "result": "success", "returncode": 0}
+{"ts": "2026-06-18T09:16:00.394257+00:00", "level": "INFO", "event_type": "ACTION_EXECUTED", "service": "circuit-test-2", "action": "runbooks/restart_service.sh", "result": "success"}
+{"ts": "2026-06-18T09:16:00.395485+00:00", "level": "INFO", "event_type": "VERIFY_FAIL", "service": "circuit-test-2", "action": "prometheus_verify", "result": "fail", "samples": 3}
+{"ts": "2026-06-18T09:16:00.396148+00:00", "level": "WARNING", "event_type": "ROLLBACK_TRIGGERED", "service": "circuit-test-2", "action": "runbooks/restart_service.sh", "result": "started"}
+{"ts": "2026-06-18T09:16:00.396287+00:00", "level": "INFO", "event_type": "RUNBOOK_EXEC", "service": "circuit-test-2", "action": "runbooks/restart_service.sh", "result": "started", "dry_run": false}
+{"ts": "2026-06-18T09:16:00.451472+00:00", "level": "INFO", "event_type": "RUNBOOK_RESULT", "service": "circuit-test-2", "action": "runbooks/restart_service.sh", "result": "success", "returncode": 0}
+{"ts": "2026-06-18T09:16:00.452425+00:00", "level": "INFO", "event_type": "ROLLBACK_EXECUTED", "service": "circuit-test-2", "action": "runbooks/restart_service.sh", "result": "success"}
+{"ts": "2026-06-18T09:16:00.452832+00:00", "level": "INFO", "event_type": "VERIFY_PASS", "service": "circuit-test-2", "action": "prometheus_verify", "result": "pass", "samples": 3}
+{"ts": "2026-06-18T09:16:00.453067+00:00", "level": "INFO", "event_type": "ROLLBACK_VERIFY_PASS", "service": "circuit-test-2", "action": "runbooks/restart_service.sh", "result": "pass"}
+{"ts": "2026-06-18T09:16:00.453298+00:00", "level": "ERROR", "event_type": "CIRCUIT_BREAKER_HALT", "consecutive_failures": 3, "threshold": 3, "message": "Automation halted. Manual intervention required."}
+{"ts": "2026-06-18T09:16:00.453527+00:00", "level": "INFO", "event_type": "CIRCUIT_STATE", "service": "all", "action": "halt_automation", "result": "open"}
+{"ts": "2026-06-18T09:16:00.453724+00:00", "level": "INFO", "event_type": "ALERT_DETECTED", "service": "api-gateway", "action": "MultiStepDeploy", "result": "detected", "severity": "test"}
+{"ts": "2026-06-18T09:16:00.453961+00:00", "level": "INFO", "event_type": "DECIDE_RUNBOOK", "service": "api-gateway", "action": "runbooks/multi_step_deploy.sh --step-a", "result": "selected", "alertname": "MultiStepDeploy"}
+{"ts": "2026-06-18T09:16:00.454156+00:00", "level": "INFO", "event_type": "BLAST_RADIUS_OK", "service": "api-gateway", "action": "runbooks/multi_step_deploy.sh --step-a", "result": "pass"}
+{"ts": "2026-06-18T09:16:00.454371+00:00", "level": "INFO", "event_type": "RUNBOOK_EXEC", "service": "api-gateway", "action": "runbooks/multi_step_deploy.sh --step-a", "result": "started", "dry_run": true}
+{"ts": "2026-06-18T09:16:00.508814+00:00", "level": "INFO", "event_type": "RUNBOOK_RESULT", "service": "api-gateway", "action": "runbooks/multi_step_deploy.sh --step-a", "result": "success", "returncode": 0}
+{"ts": "2026-06-18T09:16:00.509687+00:00", "level": "INFO", "event_type": "DRY_RUN_PASS", "service": "api-gateway", "action": "runbooks/multi_step_deploy.sh --step-a", "result": "pass"}
+{"ts": "2026-06-18T09:16:00.510134+00:00", "level": "INFO", "event_type": "RUNBOOK_EXEC", "service": "api-gateway", "action": "runbooks/multi_step_deploy.sh --step-a", "result": "started", "dry_run": false}
+{"ts": "2026-06-18T09:16:00.565334+00:00", "level": "INFO", "event_type": "RUNBOOK_RESULT", "service": "api-gateway", "action": "runbooks/multi_step_deploy.sh --step-a", "result": "success", "returncode": 0}
+{"ts": "2026-06-18T09:16:00.565907+00:00", "level": "INFO", "event_type": "TRANSACTIONAL_STEP_COMPLETE", "service": "api-gateway", "action": "runbooks/multi_step_deploy.sh --step-a", "result": "success"}
+{"ts": "2026-06-18T09:16:00.566118+00:00", "level": "INFO", "event_type": "RUNBOOK_EXEC", "service": "api-gateway", "action": "runbooks/multi_step_deploy.sh --step-b", "result": "started", "dry_run": false}
+{"ts": "2026-06-18T09:16:00.621244+00:00", "level": "INFO", "event_type": "RUNBOOK_RESULT", "service": "api-gateway", "action": "runbooks/multi_step_deploy.sh --step-b", "result": "success", "returncode": 0}
+{"ts": "2026-06-18T09:16:00.621825+00:00", "level": "INFO", "event_type": "TRANSACTIONAL_STEP_COMPLETE", "service": "api-gateway", "action": "runbooks/multi_step_deploy.sh --step-b", "result": "success"}
+{"ts": "2026-06-18T09:16:00.622099+00:00", "level": "INFO", "event_type": "RUNBOOK_EXEC", "service": "api-gateway", "action": "runbooks/multi_step_deploy.sh --step-c", "result": "started", "dry_run": false}
+{"ts": "2026-06-18T09:16:00.675004+00:00", "level": "INFO", "event_type": "RUNBOOK_RESULT", "service": "api-gateway", "action": "runbooks/multi_step_deploy.sh --step-c", "result": "fail", "returncode": 1}
+{"ts": "2026-06-18T09:16:00.675991+00:00", "level": "ERROR", "event_type": "TRANSACTIONAL_STEP_FAIL", "service": "api-gateway", "action": "runbooks/multi_step_deploy.sh --step-c", "result": "fail", "completed_before_failure": ["runbooks/multi_step_deploy.sh --step-a", "runbooks/multi_step_deploy.sh --step-b"]}
+{"ts": "2026-06-18T09:16:00.676513+00:00", "level": "INFO", "event_type": "RUNBOOK_EXEC", "service": "api-gateway", "action": "runbooks/multi_step_deploy.sh --rollback-b", "result": "started", "dry_run": false}
+{"ts": "2026-06-18T09:16:00.731768+00:00", "level": "INFO", "event_type": "RUNBOOK_RESULT", "service": "api-gateway", "action": "runbooks/multi_step_deploy.sh --rollback-b", "result": "success", "returncode": 0}
+{"ts": "2026-06-18T09:16:00.732181+00:00", "level": "WARNING", "event_type": "TRANSACTIONAL_ROLLBACK_STEP", "service": "api-gateway", "action": "runbooks/multi_step_deploy.sh --rollback-b", "result": "success"}
+{"ts": "2026-06-18T09:16:00.732514+00:00", "level": "INFO", "event_type": "RUNBOOK_EXEC", "service": "api-gateway", "action": "runbooks/multi_step_deploy.sh --rollback-a", "result": "started", "dry_run": false}
+{"ts": "2026-06-18T09:16:00.787665+00:00", "level": "INFO", "event_type": "RUNBOOK_RESULT", "service": "api-gateway", "action": "runbooks/multi_step_deploy.sh --rollback-a", "result": "success", "returncode": 0}
+{"ts": "2026-06-18T09:16:00.788380+00:00", "level": "WARNING", "event_type": "TRANSACTIONAL_ROLLBACK_STEP", "service": "api-gateway", "action": "runbooks/multi_step_deploy.sh --rollback-a", "result": "success"}
+{"ts": "2026-06-18T09:16:00.788704+00:00", "level": "INFO", "event_type": "TRANSACTIONAL_ROLLBACK_COMPLETE", "service": "api-gateway", "action": "transactional_rollback", "result": "complete", "rolled_back": ["runbooks/multi_step_deploy.sh --rollback-b", "runbooks/multi_step_deploy.sh --rollback-a"]}
+{"ts": "2026-06-18T09:16:00.790425+00:00", "level": "INFO", "event_type": "ALERT_DETECTED", "service": "payment-svc", "action": "HighLatency", "result": "detected", "severity": "test"}
+{"ts": "2026-06-18T09:16:00.790601+00:00", "level": "INFO", "event_type": "ALERT_DETECTED", "service": "inventory-svc", "action": "HighLatency", "result": "detected", "severity": "test"}
+{"ts": "2026-06-18T09:16:00.790963+00:00", "level": "INFO", "event_type": "DECIDE_RUNBOOK", "service": "payment-svc", "action": "runbooks/restart_service.sh", "result": "selected", "alertname": "HighLatency"}
+{"ts": "2026-06-18T09:16:00.791185+00:00", "level": "INFO", "event_type": "DECIDE_RUNBOOK", "service": "inventory-svc", "action": "runbooks/restart_service.sh", "result": "selected", "alertname": "HighLatency"}
+{"ts": "2026-06-18T09:16:00.791384+00:00", "level": "INFO", "event_type": "BLAST_RADIUS_OK", "service": "payment-svc", "action": "runbooks/restart_service.sh", "result": "pass"}
+{"ts": "2026-06-18T09:16:00.791518+00:00", "level": "INFO", "event_type": "BLAST_RADIUS_OK", "service": "inventory-svc", "action": "runbooks/restart_service.sh", "result": "pass"}
+{"ts": "2026-06-18T09:16:00.792038+00:00", "level": "INFO", "event_type": "RUNBOOK_EXEC", "service": "payment-svc", "action": "runbooks/restart_service.sh", "result": "started", "dry_run": true}
+{"ts": "2026-06-18T09:16:00.792878+00:00", "level": "INFO", "event_type": "RUNBOOK_EXEC", "service": "inventory-svc", "action": "runbooks/restart_service.sh", "result": "started", "dry_run": true}
+{"ts": "2026-06-18T09:16:00.803455+00:00", "level": "INFO", "event_type": "ALERT_DETECTED", "service": "payment-svc", "action": "HighLatency", "result": "detected", "severity": "test"}
+{"ts": "2026-06-18T09:16:00.804187+00:00", "level": "INFO", "event_type": "DECIDE_RUNBOOK", "service": "payment-svc", "action": "runbooks/restart_service.sh", "result": "selected", "alertname": "HighLatency"}
+{"ts": "2026-06-18T09:16:00.804354+00:00", "level": "INFO", "event_type": "BLAST_RADIUS_OK", "service": "payment-svc", "action": "runbooks/restart_service.sh", "result": "pass"}
+{"ts": "2026-06-18T09:16:00.804467+00:00", "level": "WARNING", "event_type": "SERVICE_LOCK_BUSY", "service": "payment-svc", "action": "runbooks/restart_service.sh", "result": "skipped"}
+{"ts": "2026-06-18T09:16:00.848198+00:00", "level": "INFO", "event_type": "RUNBOOK_RESULT", "service": "inventory-svc", "action": "runbooks/restart_service.sh", "result": "success", "returncode": 0}
+{"ts": "2026-06-18T09:16:00.848389+00:00", "level": "INFO", "event_type": "RUNBOOK_RESULT", "service": "payment-svc", "action": "runbooks/restart_service.sh", "result": "success", "returncode": 0}
+{"ts": "2026-06-18T09:16:00.848569+00:00", "level": "INFO", "event_type": "DRY_RUN_PASS", "service": "inventory-svc", "action": "runbooks/restart_service.sh", "result": "pass"}
+{"ts": "2026-06-18T09:16:00.848916+00:00", "level": "INFO", "event_type": "RUNBOOK_EXEC", "service": "inventory-svc", "action": "runbooks/restart_service.sh", "result": "started", "dry_run": false}
+{"ts": "2026-06-18T09:16:00.849113+00:00", "level": "INFO", "event_type": "DRY_RUN_PASS", "service": "payment-svc", "action": "runbooks/restart_service.sh", "result": "pass"}
+{"ts": "2026-06-18T09:16:00.849423+00:00", "level": "INFO", "event_type": "RUNBOOK_EXEC", "service": "payment-svc", "action": "runbooks/restart_service.sh", "result": "started", "dry_run": false}
+{"ts": "2026-06-18T09:16:00.901641+00:00", "level": "INFO", "event_type": "RUNBOOK_RESULT", "service": "payment-svc", "action": "runbooks/restart_service.sh", "result": "success", "returncode": 0}
+{"ts": "2026-06-18T09:16:00.901941+00:00", "level": "INFO", "event_type": "ACTION_EXECUTED", "service": "payment-svc", "action": "runbooks/restart_service.sh", "result": "success"}
+{"ts": "2026-06-18T09:16:00.902066+00:00", "level": "INFO", "event_type": "VERIFY_PASS", "service": "payment-svc", "action": "prometheus_verify", "result": "pass", "samples": 3}
+{"ts": "2026-06-18T09:16:00.902170+00:00", "level": "INFO", "event_type": "ACTION_SUCCESS", "service": "payment-svc", "action": "runbooks/restart_service.sh", "result": "success", "alertname": "HighLatency"}
+{"ts": "2026-06-18T09:16:00.904327+00:00", "level": "INFO", "event_type": "RUNBOOK_RESULT", "service": "inventory-svc", "action": "runbooks/restart_service.sh", "result": "success", "returncode": 0}
+{"ts": "2026-06-18T09:16:00.904458+00:00", "level": "INFO", "event_type": "ACTION_EXECUTED", "service": "inventory-svc", "action": "runbooks/restart_service.sh", "result": "success"}
+{"ts": "2026-06-18T09:16:00.904588+00:00", "level": "INFO", "event_type": "VERIFY_PASS", "service": "inventory-svc", "action": "prometheus_verify", "result": "pass", "samples": 3}
+{"ts": "2026-06-18T09:16:00.904702+00:00", "level": "INFO", "event_type": "ACTION_SUCCESS", "service": "inventory-svc", "action": "runbooks/restart_service.sh", "result": "success", "alertname": "HighLatency"}
+{"ts": "2026-06-18T09:16:00.904965+00:00", "level": "INFO", "event_type": "ALERT_DETECTED", "service": "payment-svc", "action": "TestHallucination", "result": "detected", "severity": "test"}
+{"ts": "2026-06-18T09:16:00.905282+00:00", "level": "ERROR", "event_type": "DECISION_VALIDATION_FAILED", "service": "decision-engine", "action": "escalate_no_auto_action", "result": "rejected", "bad_runbook": "runbooks/nonexistent_runbook.sh", "alertname": "TestHallucination", "raw_decision": "runbooks/nonexistent_runbook.sh"}
+{"ts": "2026-06-18T09:16:00.905414+00:00", "level": "INFO", "event_type": "SELF_TEST_COMPLETE", "service": "all", "action": "six_scenarios", "result": "pass"}

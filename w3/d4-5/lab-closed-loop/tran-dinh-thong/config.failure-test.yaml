@@ -1,0 +1,37 @@
+alertmanager_url: "http://localhost:9093"
+prometheus_url: "http://localhost:9090"
+poll_interval_seconds: 5
+runbook_timeout_seconds: 30
+baseline_path: "../data-pack/data/baseline.json"
+
+runbook_map:
+  HighLatency: "runbooks/restart_service.sh"
+  HighErrorRate: "runbooks/clear_cache.sh"
+  InstanceDown: "runbooks/restart_service.sh"
+
+runbook_registry:
+  - "runbooks/restart_service.sh"
+  - "runbooks/clear_cache.sh"
+  - "runbooks/scale_replicas.sh"
+  - "runbooks/multi_step_deploy.sh"
+
+rollback_map:
+  HighLatency: "runbooks/restart_service.sh"
+  HighErrorRate: "runbooks/restart_service.sh"
+  InstanceDown: "runbooks/restart_service.sh"
+
+blast_radius:
+  max_actions_per_minute: 10
+  max_restarts_per_service_per_hour: 5
+
+circuit_breaker:
+  consecutive_failure_threshold: 3
+  reset_mode: manual
+
+# Handout-approved fault test: make verify deliberately impossible while still
+# polling at least three times. This exercises rollback and circuit opening.
+verify_threshold_overrides:
+  latency_p99_max_ms: 10
+  verify_timeout_seconds: 8
+  verify_poll_interval_seconds: 2
+  verify_min_samples: 3

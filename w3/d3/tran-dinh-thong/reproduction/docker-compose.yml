@@ -1,0 +1,19 @@
+services:
+  billing:
+    image: alpine:3.20
+    container_name: d3-aws-billing
+    command: sh -c "echo billing-svc up; sleep infinity"
+    labels:
+      outage.service: billing
+  index:
+    image: alpine:3.20
+    container_name: d3-aws-index
+    command: sh -c "echo index-svc up; sleep infinity"
+    labels:
+      outage.service: index
+  placement:
+    image: alpine:3.20
+    container_name: d3-aws-placement
+    command: sh -c "echo placement-svc up; sleep infinity"
+    labels:
+      outage.service: placement

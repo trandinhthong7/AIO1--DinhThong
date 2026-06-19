@@ -1,0 +1,144 @@
+[
+  {
+    "ts": "2026-06-18T18:12:50+00:00",
+    "source": "capture",
+    "event": "capture_started",
+    "start_epoch": 1781806370
+  },
+  {
+    "ts": "2026-06-18T18:12:50+00:00",
+    "source": "docker",
+    "event": "baseline_state",
+    "service": "billing",
+    "state": "running"
+  },
+  {
+    "ts": "2026-06-18T18:12:50+00:00",
+    "source": "docker",
+    "event": "baseline_state",
+    "service": "index",
+    "state": "running"
+  },
+  {
+    "ts": "2026-06-18T18:12:50+00:00",
+    "source": "docker",
+    "event": "baseline_state",
+    "service": "placement",
+    "state": "running"
+  },
+  {
+    "ts": "2026-06-18T18:12:53+00:00",
+    "source": "operator",
+    "event": "inject_started",
+    "intended_target": "billing"
+  },
+  {
+    "ts": "2026-06-18T18:12:55+00:00",
+    "source": "operator",
+    "event": "inject_completed",
+    "returncode": 0,
+    "output": "[2026-06-18T18:12:53Z] intended target=billing\n[2026-06-18T18:12:53Z] executing unscoped command: docker compose stop\n[2026-06-18T18:12:55Z] billing, index, and placement stopped"
+  },
+  {
+    "ts": "2026-06-18T18:12:55+00:00",
+    "source": "docker",
+    "event": "container_state_changed",
+    "service": "billing",
+    "previous": "running",
+    "current": "exited"
+  },
+  {
+    "ts": "2026-06-18T18:12:55+00:00",
+    "source": "docker",
+    "event": "container_state_changed",
+    "service": "index",
+    "previous": "running",
+    "current": "exited"
+  },
+  {
+    "ts": "2026-06-18T18:12:55+00:00",
+    "source": "docker",
+    "event": "container_state_changed",
+    "service": "placement",
+    "previous": "running",
+    "current": "exited"
+  },
+  {
+    "ts": "2026-06-18T18:12:56+00:00",
+    "source": "pipeline",
+    "event": "alert_observed",
+    "alert": {
+      "name": "InstanceUnavailable",
+      "service": "billing",
+      "state": "exited",
+      "fire_ts": 1781806375,
+      "severity": "warning"
+    }
+  },
+  {
+    "ts": "2026-06-18T18:12:56+00:00",
+    "source": "pipeline",
+    "event": "alert_observed",
+    "alert": {
+      "name": "InstanceUnavailable",
+      "service": "index",
+      "state": "exited",
+      "fire_ts": 1781806375,
+      "severity": "critical"
+    }
+  },
+  {
+    "ts": "2026-06-18T18:12:56+00:00",
+    "source": "pipeline",
+    "event": "alert_observed",
+    "alert": {
+      "name": "InstanceUnavailable",
+      "service": "placement",
+      "state": "exited",
+      "fire_ts": 1781806375,
+      "severity": "critical"
+    }
+  },
+  {
+    "ts": "2026-06-18T18:13:02+00:00",
+    "source": "response",
+    "event": "recovery_started"
+  },
+  {
+    "ts": "2026-06-18T18:13:03+00:00",
+    "source": "response",
+    "event": "recovery_completed",
+    "returncode": 0,
+    "output": "[2026-06-18T18:13:02Z] starting billing, index, and placement\n[2026-06-18T18:13:03Z] all reproduction services started"
+  },
+  {
+    "ts": "2026-06-18T18:13:03+00:00",
+    "source": "docker",
+    "event": "container_state_changed",
+    "service": "billing",
+    "previous": "exited",
+    "current": "running"
+  },
+  {
+    "ts": "2026-06-18T18:13:03+00:00",
+    "source": "docker",
+    "event": "container_state_changed",
+    "service": "index",
+    "previous": "exited",
+    "current": "running"
+  },
+  {
+    "ts": "2026-06-18T18:13:03+00:00",
+    "source": "docker",
+    "event": "container_state_changed",
+    "service": "placement",
+    "previous": "exited",
+    "current": "running"
+  },
+  {
+    "ts": "2026-06-18T18:13:15+00:00",
+    "source": "capture",
+    "event": "capture_completed",
+    "event_count_before_close": 17
+  }
+]

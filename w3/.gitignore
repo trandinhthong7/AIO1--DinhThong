@@ -11,6 +11,8 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+**/mlruns/
+**/outputs/drift_reports/
 
 # Large generated lab data
 **/data/*.jsonl
@@ -38,6 +40,7 @@ __pycache__/
 # Generic logs, except small submission evidence below
 *.log
 !d2/w3-d2-pack/probe.log
+!d4-5/lab-closed-loop/tran-dinh-thong/self-test.log
 
 # Keep required small submission outputs trackable
 !**/baseline.json

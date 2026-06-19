@@ -1,0 +1,3 @@
+{'monthly_value': 8000.0, 'monthly_cost': 15000.0, 'roi': 0.5333333333333333, 'payback_months': 1.875, 'verdict': 'not_worth_it'}
+{'monthly_value': 80000.0, 'monthly_cost': 25000.0, 'roi': 3.2, 'payback_months': 0.3125, 'verdict': 'worth_it'}
+{'monthly_value': 100000.0, 'monthly_cost': 30000.0, 'roi': 3.3333333333333335, 'payback_months': 0.3, 'verdict': 'worth_it'}
