@@ -112,7 +112,7 @@ All metrics are sampled at 1-minute resolution.
 
 ## Required Deliverables
 
-Submit the following files in your repository at `w3/d3/`:
+Submit the following files in your repository under `lab-rca-forensics/`:
 
 ### 1. `RCA_REPORT.md`
 
@@ -288,7 +288,7 @@ happens offline.
 ## File Tree
 
 ```
-w3/d3/
+lab-rca-forensics/
 ├── RCA_REPORT.md
 ├── correlator.py
 ├── evidence_graph.py
